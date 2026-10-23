@@ -27,10 +27,18 @@ PowerStrategyMode: setEnable newValue=false ... type=2 enable=true
 - HyperOS shows a "frequent installs" risk check if the trigger is installed many times in one day.
 - Tested on Redmi Note 14 (beryl), HyperOS OS3.0.306.0.WOQCNXM.
 
+## Download
+
+Get the APK from [Releases](https://github.com/sajidifti/gms-unfreeze/releases).
+
 ## Build
 
 ```bash
-gradle :app:assembleRelease
+./gradlew :app:assembleRelease
 ```
 
-The stub is built and bundled into `app` as `assets/trigger.apk` automatically. Output: `app/build/outputs/apk/release/app-release.apk`.
+The stub is built and bundled into `app` as `assets/trigger.apk` automatically. Output: `app/build/outputs/apk/release/app-release.apk`. Without `SIGNING_KEYSTORE`/`SIGNING_PASSWORD` set, it is signed with the debug key.
+
+## Releasing
+
+Push a `vX.Y.Z` tag. The `Release` workflow builds with the release key from the `SIGNING_KEYSTORE_B64` and `SIGNING_PASSWORD` secrets and publishes the APK. App and stub must always be signed with the same key.
