@@ -1,0 +1,25 @@
+plugins {
+    id "com.android.application"
+}
+
+// Empty package whose name contains "android.cts". HyperOS 3's greezer turns its
+// screen-off freezer off when such a package is added or updated (EventReceiver.dealPackageAddRemove).
+android {
+    namespace "com.sajidifti.android.cts.trigger"
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.sajidifti.android.cts.trigger"
+        minSdk 26
+        targetSdk 36
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+    }
+}
